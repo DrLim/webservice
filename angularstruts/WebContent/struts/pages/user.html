@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-resource.min.js"></script>
+<link rel="stylesheet" href="../design/css/CoveoFullSearch.css">
+</head>
+<body ng-app="mainApp" style="display: block;" id="search" class="CoveoSearchInterface Coveostate CoveoComponentState CoveoComponentOptions CoveoQueryController CoveoHistoryController CoveoDebug" data-enable-history="true">
+	<form ng-controller="searchController">
+		{{status}}
+			<input type="number" name="id" ng-model="book.id"/>
+			<input type="text" name="name" ng-model="book.name"/>
+			<input type="text" name="path" ng-model="book.path"/>
+			<input type="button" value="Send" ng-click="onSend()">
+			<div class="coveo-search-section">
+				<div class="coveo-logo-column">
+					<div class="coveo-logo"></div>
+				</div>
+				<div class="coveo-searchBox-column">
+					<div class="coveo-search-section-wrapper">
+						<div class="CoveoSearchBox" data-activate-omnibox="true">
+							<a href="#" ng-click="onSearch($event)" class="CoveoSearchButton"><span
+								class="coveo-icon">Search</span></a>
+							<div>
+								<input form="coveo-dummy-form" class="CoveoQueryBox"
+									autocapitalize="off" autocorrect="off" type="text" ng-model="query">
+								<div style="display: none;" class="coveo-omnibox"></div>
+								<span style="display: none;" class="coveo-query-box-clear"><span
+									class="coveo-icon"></span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div></div>
+			<div >
+			
+			</div>
+
+			<div class="coveo-results-section">
+				<div class="coveo-facet-column">
+					<div class="coveo-topSpace"></div>
+					<div style="" class="CoveoFacet" data-title="Type"
+						data-field="@objecttype" data-allow-toggling-operator="true"
+						data-show-icon="true" data-tab="All">
+						<div class="coveo-header">
+							<div class="coveo-icon objecttype"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div title="Settings" class="coveo-settings">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-collapse" title="Collapse">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-expand" style="display: none;" title="Expand">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-operator" title="Switch to AND">
+								<span class="coveo-icon coveo-or"></span>
+							</div>
+							<div style="display: none;" class="coveo-eraser"
+								title="Clear Type">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-title">Type</div>
+						</div>
+						<ul class="coveo-values">
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Message"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<div class="coveo-icon objecttype Message"></div>
+										<span class="coveo-caption">Message</span><span
+											class="coveo-count">285,882</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Thread"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<div class="coveo-icon objecttype Thread"></div>
+										<span class="coveo-caption">Thread</span><span
+											class="coveo-count">2,642</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude File"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<div class="coveo-icon objecttype File"></div>
+										<span class="coveo-caption">File</span><span
+											class="coveo-count">1,010</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Item"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<div class="coveo-icon objecttype Item"></div>
+										<span class="coveo-caption">Item</span><span
+											class="coveo-count">961</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Opportunity"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<div class="coveo-icon objecttype Opportunity"></div>
+										<span class="coveo-caption">Opportunity</span><span
+											class="coveo-count">31</span>
+									</div></label></li>
+						</ul>
+						<div class="coveo-search">
+							<div class="coveo-magnifier"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div style="display: none;" title="Clear Search"
+								class="coveo-clear">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-middle">
+								<input form="coveo-dummy-form" autocapitalize="off"
+									autocorrect="off" placeholder="Search in Type" type="text">
+							</div>
+						</div>
+						<div class="coveo-footer">
+							<a href="javascript:" class="coveo-more coveo-active">More</a><a
+								href="javascript:" style="display: none;" class="coveo-less">Fewer</a>
+						</div>
+					</div>
+
+					<div style="" class="CoveoFacet" data-title="FileType"
+						data-field="@sysfiletype" data-tab="All">
+						<div class="coveo-header">
+							<div class="coveo-icon sysfiletype"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div title="Settings" class="coveo-settings">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-collapse" title="Collapse">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-expand" style="display: none;" title="Expand">
+								<span class="coveo-icon"></span>
+							</div>
+							<div style="display: none;" class="coveo-operator"
+								title="Switch to AND">
+								<span class="coveo-icon coveo-or"></span>
+							</div>
+							<div style="display: none;" class="coveo-eraser"
+								title="Clear File type">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-title">File type</div>
+						</div>
+						<ul class="coveo-values">
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Message"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">Message</span><span
+											class="coveo-count">264,914</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Text"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">Text</span><span
+											class="coveo-count">14,142</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude YouTubePlaylistItem"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">YouTubePlaylistItem</span><span
+											class="coveo-count">8,308</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude HTML File"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">HTML File</span><span
+											class="coveo-count">7,272</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude YouTubeVideo"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">YouTubeVideo</span><span
+											class="coveo-count">6,673</span>
+									</div></label></li>
+						</ul>
+						<div class="coveo-search">
+							<div class="coveo-magnifier"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div style="display: none;" title="Clear Search"
+								class="coveo-clear">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-middle">
+								<input form="coveo-dummy-form" autocapitalize="off"
+									autocorrect="off" placeholder="Search in File type" type="text">
+							</div>
+						</div>
+						<div class="coveo-footer">
+							<a href="javascript:" class="coveo-more coveo-active">More</a><a
+								href="javascript:" style="display: none;" class="coveo-less">Fewer</a>
+						</div>
+					</div>
+
+					<div style="" class="CoveoFacet" data-title="Author"
+						data-field="@sysauthor" data-tab="All">
+						<div class="coveo-header">
+							<div class="coveo-icon sysauthor"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div title="Settings" class="coveo-settings">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-collapse" title="Collapse">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-expand" style="display: none;" title="Expand">
+								<span class="coveo-icon"></span>
+							</div>
+							<div style="display: none;" class="coveo-operator"
+								title="Switch to AND">
+								<span class="coveo-icon coveo-or"></span>
+							</div>
+							<div style="display: none;" class="coveo-eraser"
+								title="Clear Author">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-title">Author</div>
+						</div>
+						<ul class="coveo-values">
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude BBC News"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">BBC News</span><span
+											class="coveo-count">11,255</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude TED"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">TED</span><span
+											class="coveo-count">3,925</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Martin Laporte"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">Martin Laporte</span><span
+											class="coveo-count">126</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Compte système"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">Compte système</span><span
+											class="coveo-count">10</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude Kater Pillar"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">Kater Pillar</span><span
+											class="coveo-count">9</span>
+									</div></label></li>
+						</ul>
+						<div class="coveo-search">
+							<div class="coveo-magnifier"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div style="display: none;" title="Clear Search"
+								class="coveo-clear">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-middle">
+								<input form="coveo-dummy-form" autocapitalize="off"
+									autocorrect="off" placeholder="Search in Author" type="text">
+							</div>
+						</div>
+						<div class="coveo-footer">
+							<a href="javascript:" class="coveo-more coveo-active">More</a><a
+								href="javascript:" style="display: none;" class="coveo-less">Fewer</a>
+						</div>
+					</div>
+
+					<div style="" class="CoveoFacet" data-title="Year"
+						data-field="@sysyear" data-tab="All">
+						<div class="coveo-header">
+							<div class="coveo-icon sysyear"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div title="Settings" class="coveo-settings">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-collapse" title="Collapse">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-expand" style="display: none;" title="Expand">
+								<span class="coveo-icon"></span>
+							</div>
+							<div style="display: none;" class="coveo-operator"
+								title="Switch to AND">
+								<span class="coveo-icon coveo-or"></span>
+							</div>
+							<div style="display: none;" class="coveo-eraser"
+								title="Clear Year">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-title">Year</div>
+						</div>
+						<ul class="coveo-values">
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude 2013"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">2013</span><span
+											class="coveo-count">85,475</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude 2014"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">2014</span><span
+											class="coveo-count">83,128</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude 2015"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">2015</span><span
+											class="coveo-count">60,321</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude 2016"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">2016</span><span
+											class="coveo-count">20,312</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude 2012"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">2012</span><span
+											class="coveo-count">19,614</span>
+									</div></label></li>
+						</ul>
+						<div class="coveo-search">
+							<div class="coveo-magnifier"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div style="display: none;" title="Clear Search"
+								class="coveo-clear">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-middle">
+								<input form="coveo-dummy-form" autocapitalize="off"
+									autocorrect="off" placeholder="Search in Year" type="text">
+							</div>
+						</div>
+						<div class="coveo-footer">
+							<a href="javascript:" class="coveo-more coveo-active">More</a><a
+								href="javascript:" style="display: none;" class="coveo-less">Fewer</a>
+						</div>
+					</div>
+
+					<div style="" class="CoveoFacet" data-title="Month"
+						data-field="@sysmonth" data-tab="All">
+						<div class="coveo-header">
+							<div class="coveo-icon sysmonth"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div title="Settings" class="coveo-settings">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-collapse" title="Collapse">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-expand" style="display: none;" title="Expand">
+								<span class="coveo-icon"></span>
+							</div>
+							<div style="display: none;" class="coveo-operator"
+								title="Switch to AND">
+								<span class="coveo-icon coveo-or"></span>
+							</div>
+							<div style="display: none;" class="coveo-eraser"
+								title="Clear Month">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-title">Month</div>
+						</div>
+						<ul class="coveo-values">
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude December"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">December</span><span
+											class="coveo-count">31,999</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude January"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">January</span><span
+											class="coveo-count">31,051</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude April"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">April</span><span
+											class="coveo-count">27,498</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude November"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">November</span><span
+											class="coveo-count">25,816</span>
+									</div></label></li>
+							<li class="coveo-value coveo-selectable"><div
+									class="coveo-exclude" title="Exclude February"></div>
+								<label><div class="coveo-label">
+										<input form="coveo-dummy-form" type="checkbox">
+										<div class="coveo-checkbox">
+											<span></span>
+										</div>
+										<span class="coveo-caption">February</span><span
+											class="coveo-count">24,489</span>
+									</div></label></li>
+						</ul>
+						<div class="coveo-search">
+							<div class="coveo-magnifier"></div>
+							<div style="display: none;" class="coveo-wait-animation"></div>
+							<div style="display: none;" title="Clear Search"
+								class="coveo-clear">
+								<span class="coveo-icon"></span>
+							</div>
+							<div class="coveo-middle">
+								<input form="coveo-dummy-form" autocapitalize="off"
+									autocorrect="off" placeholder="Search in Month" type="text">
+							</div>
+						</div>
+						<div class="coveo-footer">
+							<a href="javascript:" class="coveo-more coveo-active">More</a><a
+								href="javascript:" style="display: none;" class="coveo-less">Fewer</a>
+						</div>
+					</div>
+					<div class="coveo-bottomSpace"></div>
+				</div>
+
+				<div class="coveo-results-column">
+					<div class="CoveoShareQuery">
+						<div class="coveo-query-summary-info">
+							<span class="coveo-query-summary-info-title">Share Query</span>
+							<div class="coveo-query-summary-info-close">
+								<span></span>
+							</div>
+							<div class="coveo-query-summary-info-boxes">
+								<div>
+									<span class="coveo-query-summary-info-label">Link:</span><input
+										form="coveo-dummy-form" class="coveo-query-summary-info-input"
+										type="text">
+								</div>
+								<div>
+									<span class="coveo-query-summary-info-label">Complete
+										Query:</span><input form="coveo-dummy-form"
+										class="coveo-query-summary-info-input" type="text">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="CoveoPreferencesPanel">
+						<div class="coveo-title">Preferences</div>
+						<div class="coveo-close">
+							<span class="coveo-icon"></span>
+						</div>
+						<div class="CoveoResultsPreferences">
+							<div class="coveo-title">Link Opening Settings</div>
+							<div class="coveo-choices-container">
+								<div class="coveo-choice-container">
+									<div class="coveo-section coveo-section-input">
+										<input class="coveo-Open in Outlook (when possible)"
+											id="coveo-Open in Outlook (when possible)"
+											name="ResultsPreferences"
+											value="Open in Outlook (when possible)" type="checkbox"><span
+											class="coveo-input-icon"></span><label
+											for="coveo-Open in Outlook (when possible)">Open in
+											Outlook (when possible)</label>
+									</div>
+									<div class="coveo-section coveo-section-tab"></div>
+									<div class="coveo-section coveo-section-expression"></div>
+								</div>
+								<div class="coveo-choice-container">
+									<div class="coveo-section coveo-section-input">
+										<input class="coveo-Always open results in new window"
+											id="coveo-Always open results in new window"
+											name="ResultsPreferences"
+											value="Always open results in new window" type="checkbox"><span
+											class="coveo-input-icon"></span><label
+											for="coveo-Always open results in new window">Always
+											open results in new window</label>
+									</div>
+									<div class="coveo-section coveo-section-tab"></div>
+									<div class="coveo-section coveo-section-expression"></div>
+								</div>
+							</div>
+						</div>
+						<div class="CoveoResultsFiltersPreferences">
+							<div class="coveo-title">Results Filtering Expressions</div>
+							<a
+								href="http://onlinehelp.coveo.com/en/ces/7.0/user/user_help.htm"
+								target="_blank" class="coveo-online-help">?</a>
+							<div class="coveo-advanced-filters">Create</div>
+							<div class="coveo-advanced-filters-builder">
+								<form>
+									<div class="coveo-choice-container coveo-caption">
+										<textarea required="" class="coveo-Caption" id="coveo-Caption"
+											name="ResultsFiltersPreferences-advanced-caption"
+											placeholder="Enter expression name"></textarea>
+									</div>
+									<div class="coveo-choice-container coveo-tab">
+										<textarea readonly="" class="coveo-Tab" id="coveo-Tab"
+											name="ResultsFiltersPreferences-multiselect"
+											placeholder="Tab"></textarea>
+										<select multiple=""><option>All</option></select>
+									</div>
+									<div class="coveo-choice-container coveo-expression">
+										<textarea required="" class="coveo-Expression"
+											id="coveo-Expression"
+											name="ResultsFiltersPreferences-advanced-expression"
+											placeholder="Enter expression to filter results with"></textarea>
+									</div>
+									<div class="coveo-choice-container coveo-close-and-save">
+										<span class="coveo-save"></span><span class="coveo-close"></span>
+									</div>
+									<input type="submit">
+								</form>
+							</div>
+						</div>
+					</div>
+					<div style="display: none;" class="CoveoBreadcrumb">
+						<div title="Clear All Filters" class="coveo-clear-all">
+							<div class="coveo-icon"></div>
+						</div>
+					</div>
+
+					<div class="coveo-results-header">
+						<div class="coveo-summary-section">
+							<span style="display: inline;" class="CoveoQuerySummary"><span>Results
+									<span class="coveo-highlight">1</span>-<span
+									class="coveo-highlight">10</span> of <span
+									class="coveo-highlight">{{totalHits}}</span>
+							</span></span> <span
+								title="Duration: in 0.09 second
+Index Duration: in 0.06 second
+Proxy Duration: Unavailable
+Client Duration: in 1.10 seconds"
+								style="display: inline;" class="CoveoQueryDuration"><span>in
+									{{duration}} second</span></span>
+						</div>
+						<div class="coveo-sort-section">
+							<span class="CoveoSort coveo-selected"
+								data-sort-criteria="relevancy" data-caption="Relevance">Relevance</span>
+							<span class="CoveoSort"
+								data-sort-criteria="date descending,date ascending"
+								data-caption="Date">Date<span class="coveo-icon"></span></span>
+						</div>
+						<div class="coveo-clear"></div>
+					</div>
+
+					<div style="display: none;" class="CoveoHiddenQuery"></div>
+					<div style="display: none;" class="CoveoDidYouMean"></div>
+					<div style="display: none;" class="CoveoErrorReport"
+						data-pop-up="false">
+						<div class="coveo-error-title">
+							<h3></h3>
+							<h4></h4>
+						</div>
+						<div class="coveo-options">
+							<span class="coveo-previous"> Go Back </span><span
+								class="coveo-clear">Reset</span><span class="coveo-retry">Retry</span>
+						</div>
+						<div class="coveo-error-message"></div>
+					</div>
+
+					<div class="CoveoResultList" data-wait-animation="fade">
+						<script class="result-template" type="application/json">
+        {
+          "fields":[
+          ]
+        }
+      </script>
+						<div class="" ng_repeat="doc in docs">
+							<div class="coveo-result-frame coveo-email-result CoveoResult">
+								<div class="coveo-result-row">
+									<div class="coveo-result-cell" style="width: 20px">
+										<span title="message"
+											class="CoveoFileTypeIcon coveo-icon objecttype message"></span>
+									</div>
+								</div>
+								<div class="coveo-result-row">
+									<div class="coveo-result-cell" style="width: 20px"></div>
+									<div class="coveo-result-cell" style="font-size: 14px">
+										<a href="javascript:" class="CoveoResultLink"
+											data-open-quickview="true">{{doc.title}}</a> <span class="CoveoQuickView"><div
+												class="coveo-icon-for-quickview">Quick View</div></span>
+									</div>
+								</div>
+								<div class="coveo-result-row">
+									<div class="coveo-result-cell" style="width: 20px"></div>
+									<div class="coveo-result-cell" style="text-align: justify">
+										<span class="CoveoExcerpt CoveoFileTypeIcon">{{doc.content}}</span>
+									</div>
+								</div>
+								<div class="coveo-result-row">
+									<div class="coveo-result-cell" style="width: 20px"></div>
+									<div class="coveo-result-cell"></div>
+								</div>
+								<div class="coveo-result-row">
+									<div class="coveo-result-cell" style="width: 20px"></div>
+									<div class="coveo-result-cell">
+										<span style="display: none;" class="CoveoResultFolding"
+											data-result-template-id="LithiumChildResult"
+											data-more-caption="ShowCompleteThread"
+											data-less-caption="ShowOnlyTopMatchingPosts"><div
+												class="coveo-folding-header">
+												<div style="display: none;"
+													class="coveo-folding-header-caption">Displaying the
+													only message in this conversation</div>
+											</div>
+											<div class="coveo-folding-results"></div></span>
+										<div class="coveo-folding-footer"></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="CoveoPager">
+						<ul>
+							<li class="coveo-active"><a>1</a></li>
+							<li class=""><a>2</a></li>
+							<li class=""><a>3</a></li>
+							<li class=""><a>4</a></li>
+							<li class=""><a>5</a></li>
+							<li class=""><a>6</a></li>
+							<li class=""><a>7</a></li>
+							<li class=""><a>8</a></li>
+							<li class=""><a>9</a></li>
+							<li class=""><a>10</a></li>
+							<li class="coveo-next"><a><span title="Next"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	</form>
+	<script src="../ressources/app.js"></script>
+	<script src="../ressources/controllers/searchController.js"></script>
+	<script src="../ressources/services/searchService.js"></script>
+</body>
+</html>
