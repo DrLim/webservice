@@ -23,7 +23,6 @@ import org.lucene.exception.SearcherException;
 import org.lucene.manager.SearcherManager;
 import org.lucene.searcher.Searcher;
 
-import com.angularstruts.document.Book2;
 import com.angularstruts.document.bo.impl.DocumentBoImpl;
 
 @Path("/")
@@ -81,9 +80,9 @@ public class DocumentSearchService {
 	@Path("/index")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response indexDocument(Book2 b){
-		System.out.println("Send value : "+b.getName());
-		return Response.status(201).entity(b).build();
+	public Response indexDocument(com.angularstruts.document.Document document){
+		System.out.println("Send value : "+document.getTitle());
+		return Response.status(201).entity(document).build();
 	}
 	
 	

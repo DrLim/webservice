@@ -12,9 +12,9 @@
 <body ng-app="mainApp" style="display: block;" id="search" class="CoveoSearchInterface Coveostate CoveoComponentState CoveoComponentOptions CoveoQueryController CoveoHistoryController CoveoDebug" data-enable-history="true">
 	<form ng-controller="searchController">
 		{{status}}
-			<input type="number" name="id" ng-model="book.id"/>
-			<input type="text" name="name" ng-model="book.name"/>
-			<input type="text" name="path" ng-model="book.path"/>
+			<input type="number" name="id" ng-model="document.id"/>
+			<input type="text" name="name" ng-model="document.title"/>
+			<input type="text" name="path" ng-model="document.path"/>
 			<input type="button" value="Send" ng-click="onSend()">
 			<div class="coveo-search-section">
 				<div class="coveo-logo-column">
