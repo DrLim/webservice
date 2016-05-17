@@ -13,8 +13,8 @@ angular.module('mainApp')
         return $http.get(urlBase+ 'search/'+query);
     };
     
-    documentFactory.indexDocument = function (book) {
-        return $http.put(urlBase + 'index', JSON.stringify(book));
+    documentFactory.indexDocument = function (document) {
+        return $http.put(urlBase + 'index', document);
     };
 
 //    documentFactory.getCustomer = function (id) {

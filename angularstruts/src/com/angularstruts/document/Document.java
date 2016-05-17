@@ -18,6 +18,9 @@ public class Document implements Indexable{
 	private String title;
 	private String path;
 
+	public Document() {
+		
+	}
 
 	public Document(Integer id, String title, String path) {
 		this.id = id ;
