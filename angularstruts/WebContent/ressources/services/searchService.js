@@ -16,6 +16,10 @@ angular.module('mainApp')
     documentFactory.indexDocument = function (document) {
         return $http.put(urlBase + 'index', document);
     };
+    
+    documentFactory.suggest = function (term){
+    	return $http.get(urlBase+ 'suggest/'+term);
+    };
 
 //    documentFactory.getCustomer = function (id) {
 //        return $http.get(urlBase + '/' + id);

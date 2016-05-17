@@ -19,9 +19,16 @@ import javax.ws.rs.core.Response;
 
 import org.apache.lucene.document.Document;
 import org.lucene.alalysis.CustomAnalyzer;
+import org.lucene.exception.DocumentNotIndexedException;
 import org.lucene.exception.SearcherException;
+import org.lucene.exception.SuggestException;
+import org.lucene.indexer.Indexer;
+import org.lucene.manager.IndexerManager;
 import org.lucene.manager.SearcherManager;
+import org.lucene.manager.SuggesterManager;
 import org.lucene.searcher.Searcher;
+import org.lucene.suggest.Suggester;
+import org.lucene.suggest.impl.SuggesterType;
 
 import com.angularstruts.document.bo.impl.DocumentBoImpl;
 
@@ -80,9 +87,18 @@ public class DocumentSearchService {
 	@Path("/index")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response indexDocument(com.angularstruts.document.Document document){
-		System.out.println("Send value : "+document.getTitle());
-		return Response.status(201).entity(document).build();
+	public Boolean indexDocument(com.angularstruts.document.Document document) throws DocumentNotIndexedException{
+		Indexer indexer = IndexerManager.getIndexer("/home/soprano/Bureau/index", new CustomAnalyzer(), false);
+		indexer.indexDocument(document);
+		return true ;
+	}
+	
+	@GET
+	@Path("/suggest/{term}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Set<String> getSuggestions(@PathParam("term") String term) throws SuggestException, IOException{
+		Suggester suggester = SuggesterManager.getSuggester("/home/soprano/Bureau/index", new CustomAnalyzer(), SuggesterType.FUZZY);
+		return suggester.getSuggestions(term, new String[]{"title","content"});
 	}
 	
 	

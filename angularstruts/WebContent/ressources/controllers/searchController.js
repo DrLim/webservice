@@ -18,7 +18,7 @@ angular.module('mainApp').controller("searchController", [ '$scope','documentFac
 			},function(error){
 				$scope.status = 'Error retrieving customers! ' + error.message;
 			});
-		}
+		};
 		
 		$scope.onSend = function() {
 			documentFactory.indexDocument(this.document)
@@ -27,6 +27,18 @@ angular.module('mainApp').controller("searchController", [ '$scope','documentFac
 			},function(error){
 				$scope.status = 'Error retrieving customers! ' + error;
 			});
-		}
+		};
+		
+		$scope.onType = function() {
+			documentFactory.suggest(this.query)
+			.then(function (response) {
+				$scope.suggestions = response.data ;
+			},function(error){
+				$scope.status = 'OK : ' ;
+				$scope.status = 'Error retrieving suggestions! ' + error;
+			});
+		};
+		
+		
 
 	} ]);
